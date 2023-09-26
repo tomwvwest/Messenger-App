@@ -53,13 +53,13 @@ body{
   border: none;
   background-color: rgb(234,234,234);
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 19px;
   padding: 5px 5px 5px 10px;
   outline: none;
 }
 .list-of-chats{
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 .chat-box{
   height: 70px;
@@ -90,11 +90,17 @@ body{
   margin: 5px;
   border-radius: 100%;
 }
-
+/* ---------------------------------- */
 .conversation-column{
   flex: 5;
   border-right: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
 }
+.conversation-title-box, .conversation-messages-box, .add-message-box{
+  width: 100%;
+}
+
 .contact-column{
   flex: 2;
   
