@@ -1,0 +1,101 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+.mainbody{
+  display: flex;
+  margin: 0;
+  height: 100vh;
+}
+.all-messages-column, .contact-column, .conversation-column{
+  padding: 10px;
+}
+
+.all-messages-column{
+  flex: 2;
+  border-right: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+}
+.all-messages-title-box{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.all-messages-title{
+  font-size: 22px;
+  font-weight: 700;
+}
+.new-message-button{
+  background-color: rgb(234, 234, 234);
+  display: flex;
+  border-radius: 100%;
+  padding: 4px;
+  transition: 0.15s;
+}
+.new-message-button:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+.chats-search-box{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}
+.chats-search{
+  width: 100%;
+  height: 30px;
+  border: none;
+  background-color: rgb(234,234,234);
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 5px 5px 5px 10px;
+  outline: none;
+}
+.list-of-chats{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.chat-box{
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: 5px 0 5px 0;
+  border-radius: 10px;
+}
+.chat-box:hover{
+  cursor: pointer;
+  background-color: rgb(234, 234, 234);
+}
+.chat-box-left{
+  width: 1fr;
+}
+.chat-box-right{
+  width: 1fr;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-pic{
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 100%;
+}
+
+.conversation-column{
+  flex: 5;
+  border-right: 1px solid lightgrey;
+}
+.contact-column{
+  flex: 2;
+  
+}

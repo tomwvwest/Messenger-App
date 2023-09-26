@@ -4,8 +4,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Messenger</title>
   </head>
+
   <body>
+    <div class="mainbody">
+      <div class="all-messages-column">
+        <div class="all-messages-title-box">
+          <div class="all-messages-title">Chats</div>
+          <div class="new-message-button">
+            <img src="icons/addIcon.svg">
+          </div>
+        </div>
+        <div class="chats-search-box">
+          <input type="text" class="chats-search" placeholder="Search Messages">
+        </div>
+        <div class="list-of-chats">
+          <div class="chat-box">
+            <div class="chat-box-left">
+              <div class="profile-pic"></div>
+            </div>
+            <div class="chat-box-right">
+              <div class="chat-box-name">Tom</div>
+              <div class="chat-box-recent">You: Hello</div>
+            </div>
+          </div>
+          <div class="chat-box">
+            <div class="chat-box-left">
+              <div class="profile-pic"></div>
+            </div>
+            <div class="chat-box-right">
+              <div class="chat-box-name">Lara</div>
+              <div class="chat-box-recent">Hello</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conversation-column">Middle</div>
+      <div class="contact-column">Right</div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
