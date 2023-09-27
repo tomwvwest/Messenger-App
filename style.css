@@ -90,10 +90,18 @@ body{
 .profile-pic{
   width: 50px;
   height: 50px;
-  background-color: green;
-  border: 1px solid black;
   margin: 5px;
   border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-image{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit:contain;
+  transform: scale(1.2);
 }
 .chat-box-recent{
   max-width: 100%;
@@ -143,10 +151,9 @@ body{
 .conversation-title-box-profile-pic{
   width: 40px;
   height: 40px;
-  background-color: green;
-  border: 1px solid black;
   margin: 5px 15px 5px 5px;
   border-radius: 100%;
+  overflow: hidden;
 }
 .call-icon-background, .video-icon-background, .settings-icon-background{
   display: flex;
@@ -261,10 +268,9 @@ body{
 .contact-column-profile-pic{
   width: 80px;
   height: 80px;
-  background-color: green;
-  border: 1px solid black;
   margin: 5px;
   border-radius: 100%;
+  overflow: hidden;
 }
 .contact-column-name{
   font-size: 19px;

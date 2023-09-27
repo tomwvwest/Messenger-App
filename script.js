@@ -1,16 +1,16 @@
 const savedCurrentContact = localStorage.getItem('currentContact');
 const listOfContacts = [
-  {name: 'Tom', photo: 'icons/Tom.JPG', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello1'}]}, 
-  {name: 'Lara', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}, 
-  {name: 'Ryan', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'}]},
-  {name: 'Luca', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}]}
+  {name: 'Tom', photo: 'icons/Tom.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello1'}]}, 
+  {name: 'Lara', photo: 'icons/Lara.jpeg', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}, 
+  {name: 'Ryan',photo: 'icons/Ryan.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'}]},
+  {name: 'Luca', photo: 'icons/Luca.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}]}
 ];
 
 const listOfChatsElement = document.querySelector('.list-of-chats');
 listOfChatsElement.innerHTML = generateChatList();
 const conversationMessagesElement = document.querySelector('.conversation-messages-box');
 const conversationContactName = document.querySelector('.conversation-title-left-box');
-const contactColumnName = document.querySelector('.contact-column-name');
+const contactColumnTop = document.querySelector('.contact-column-top');
 
 // Code for selecting which contact to view
 let currentContact = savedCurrentContact;
@@ -37,14 +37,15 @@ document.querySelectorAll('.chat-box').forEach((button) => {
 })
 
 
-// Function to generate the conversation HTML
+// Function to generate the conversation HTML and photos 
 function generateConversation(contact){
-  conversationContactName.innerHTML = `<div class="conversation-title-box-profile-pic"></div>
-  <div class="conversation-title-name">${contact}</div>`
-  contactColumnName.textContent = `${contact}`
   let listOfMessagesHTML = '';
   for(const contactName of listOfContacts){
     if(contact === contactName['name']){
+      conversationContactName.innerHTML = `<div class="conversation-title-box-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
+    <div class="conversation-title-name">${contact}</div>`
+    contactColumnTop.innerHTML = `<div class="contact-column-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
+  <div class="contact-column-name">${contact}</div>`
       for(const message of contactName['conversation']){
         if(message['direction']==='sent'){
           listOfMessagesHTML += `<div class="sent-message-box message-box">
@@ -78,7 +79,7 @@ function generateChatList() {
     listOfChatsHTML += 
       `<div class="chat-box">
         <div class="chat-box-left">
-          <div class="profile-pic"></div>
+          <div class="profile-pic"><img class="profile-image" src="${contact['photo']}"></div>
         </div>
         <div class="chat-box-right">
           <div class="chat-box-name">${contact['name']}</div>
