@@ -36,7 +36,6 @@ document.querySelectorAll('.chat-box').forEach((button) => {
   })
 })
 
-
 // Function to generate the conversation HTML and photos 
 function generateConversation(contact){
   let listOfMessagesHTML = '';
@@ -57,6 +56,7 @@ function generateConversation(contact){
           <div class="received-message message">${message['message']}</div>
         </div>`
         }
+
       }
       return listOfMessagesHTML
     }
@@ -73,8 +73,8 @@ function generateChatList() {
     } else{
       recentMessage = contact['conversation'][contact['conversation'].length - 1]['message']
     }
-    if(recentMessage.length>40){
-      recentMessage = recentMessage.slice(0,40) + '...'
+    if(recentMessage.length>35){
+      recentMessage = recentMessage.slice(0,35) + '...'
     }
     listOfChatsHTML += 
       `<div class="chat-box">
@@ -88,6 +88,23 @@ function generateChatList() {
       </div>`;
   }
   return listOfChatsHTML;
+}
+
+const messageToSend = document.querySelector('.send-message-input');
+const sendButton = document.querySelector('.send-icon-background');
+sendButton.addEventListener('click', addMessage);
+function addMessage(){
+  for(const contact of listOfContacts){
+    if(contact['name'] === currentContact){
+      contact['conversation'].push({direction: 'sent', message: `${messageToSend.value}`})
+      console.log(messageToSend.value)
+      console.log(currentContact)
+      conversationMessagesElement.innerHTML = generateConversation(currentContact);
+      listOfChatsElement.innerHTML = generateChatList();
+      messageToSend.value = '';
+      scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    }
+  }
 }
 
 //make scroller start at bottom
