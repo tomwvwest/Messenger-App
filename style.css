@@ -94,6 +94,10 @@ body{
   margin: 5px;
   border-radius: 100%;
 }
+.chat-box-recent{
+  max-width: 100%;
+  height: 20px;
+}
 /* -------------conversation section--------------------- */
 .conversation-column{
   flex: 5;

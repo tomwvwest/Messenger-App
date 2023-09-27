@@ -2,7 +2,8 @@ const savedCurrentContact = localStorage.getItem('currentContact');
 const listOfContacts = [
   {name: 'Tom', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello1'}]}, 
   {name: 'Lara', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}, 
-  {name: 'Ryan', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'}]}
+  {name: 'Ryan', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'}]},
+  {name: 'Luca', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}]}
 ];
 
 const listOfChatsElement = document.querySelector('.list-of-chats');
@@ -50,12 +51,10 @@ function generateConversation(contact){
         </div>`
         }
       }
-      console.log(listOfMessagesHTML)
       return listOfMessagesHTML
     }
     }
   }
-  
 
 // Function to generate the chat list HTML
 function generateChatList() {
@@ -66,6 +65,9 @@ function generateChatList() {
       recentMessage = 'You: ' + contact['conversation'][contact['conversation'].length - 1]['message']
     } else{
       recentMessage = contact['conversation'][contact['conversation'].length - 1]['message']
+    }
+    if(recentMessage.length>40){
+      recentMessage = recentMessage.slice(0,40) + '...'
     }
     listOfChatsHTML += 
       `<div class="chat-box">
