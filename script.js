@@ -10,6 +10,11 @@ listOfChatsElement.innerHTML = generateChatList();
 // Code for selecting which contact to view
 let currentContact = listOfContacts[0]['name'];
 document.querySelectorAll('.chat-box').forEach((button) => {
+  const contactNameElement = button.querySelector('.chat-box-name');
+  if(currentContact === contactNameElement.textContent){
+    button.style.backgroundColor = 'rgb(234,234,234)';
+  }
+
   button.addEventListener('click', () => {
     document.querySelectorAll('.chat-box').forEach((chatBox) => {
       chatBox.style.backgroundColor = '';
