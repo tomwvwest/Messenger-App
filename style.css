@@ -68,6 +68,7 @@ body{
   padding: 5px;
   margin: 5px 0 5px 0;
   border-radius: 10px;
+  transition: 0.1s;
 }
 .chat-box:hover{
   cursor: pointer;
@@ -124,6 +125,7 @@ body{
   padding: 0 10px 0 10px;
   border-radius: 10px;
   margin: 5px 0 5px 10px;
+  transition: 0.15s;
 }
 .conversation-title-left-box:hover{
   background-color: rgb(234, 234, 234);
@@ -242,4 +244,78 @@ body{
 /* ---------------contact section--------------- */
 .contact-column{
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-column-top{
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.contact-column-profile-pic{
+  width: 80px;
+  height: 80px;
+  background-color: green;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 100%;
+}
+.contact-column-name{
+  font-size: 19px;
+  font-weight: 500;
+}
+.contact-column-name:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.contact-column-middle{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.profile-box, .mute-box, .search-box{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.icon-background{
+  background-color: rgb(234, 234, 234);
+  display: flex;
+  border-radius: 100%;
+  padding: 4px;
+  margin-bottom: 8px;
+}
+.icon-background:hover{
+  cursor:pointer;
+  background-color: rgb(220, 220, 220);
+}
+.icon-caption{
+  font-size: 14px;
+}
+
+.contact-column-bottom{
+  margin-top: 20px;
+  width: 90%;
+}
+.contact-column-bottom-box{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding: 5px 0 5px 10px;
+  transition: 0.15s;
+  font-weight: 500;
+}
+.contact-column-bottom-box:hover{
+  background-color: rgb(234, 234, 234);
+  cursor: pointer;
 }
