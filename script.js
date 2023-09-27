@@ -9,6 +9,7 @@ const listOfContacts = [
 const listOfChatsElement = document.querySelector('.list-of-chats');
 listOfChatsElement.innerHTML = generateChatList();
 const conversationMessagesElement = document.querySelector('.conversation-messages-box');
+const conversationContactName = document.querySelector('.conversation-title-left-box');
 
 // Code for selecting which contact to view
 let currentContact = savedCurrentContact;
@@ -30,12 +31,15 @@ document.querySelectorAll('.chat-box').forEach((button) => {
     console.log(currentContact);
     button.style.backgroundColor = 'rgb(234,234,234)';
     conversationMessagesElement.innerHTML = generateConversation(currentContact);
+    scrollContainer.scrollTop = scrollContainer.scrollHeight;
   })
 })
 
 
 // Function to generate the conversation HTML
 function generateConversation(contact){
+  conversationContactName.innerHTML = `<div class="conversation-title-box-profile-pic"></div>
+  <div class="conversation-title-name">${contact}</div>`
   let listOfMessagesHTML = '';
   for(const contactName of listOfContacts){
     if(contact === contactName['name']){
