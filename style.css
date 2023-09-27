@@ -73,6 +73,10 @@ body{
   cursor: pointer;
   background-color: rgb(234, 234, 234);
 }
+.chat-box:active{
+  cursor: pointer;
+  background-color: rgb(220, 220, 220);
+}
 .chat-box-left{
   width: 1fr;
 }

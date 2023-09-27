@@ -4,6 +4,16 @@ const listOfContacts = [
   {name: 'Ryan', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}
 ];
 
+const listOfChatsElement = document.querySelector('.list-of-chats');
+listOfChatsElement.innerHTML = generateChatList();
+
+let currentContact = '';
+const chatboxes = document.querySelectorAll('.chat-box');
+
+
+
+
+
 // Function to generate the chat list HTML
 function generateChatList() {
   let listOfChatsHTML = '';
@@ -28,5 +38,4 @@ function generateChatList() {
   return listOfChatsHTML;
 }
 
-const listOfChatsElement = document.querySelector('.list-of-chats');
-listOfChatsElement.innerHTML = generateChatList();
+
