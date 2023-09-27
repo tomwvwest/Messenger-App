@@ -8,7 +8,7 @@ body{
   margin: 0;
   height: 100vh;
 }
-.all-messages-column, .contact-column, .conversation-column{
+.all-messages-column{
   padding: 10px;
 }
 
@@ -94,18 +94,148 @@ body{
   margin: 5px;
   border-radius: 100%;
 }
-/* ---------------------------------- */
+/* -------------conversation section--------------------- */
 .conversation-column{
   flex: 5;
   border-right: 1px solid lightgrey;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .conversation-title-box, .conversation-messages-box, .add-message-box{
   width: 100%;
 }
+.conversation-title-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+}
 
+.conversation-title-left-box{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+  margin: 5px 0 5px 10px;
+}
+.conversation-title-left-box:hover{
+  background-color: rgb(234, 234, 234);
+  cursor: pointer;
+}
+.conversation-title-left-box:active{
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
+}
+.conversation-title-right-box{
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+.conversation-title-box-profile-pic{
+  width: 40px;
+  height: 40px;
+  background-color: green;
+  border: 1px solid black;
+  margin: 5px 15px 5px 5px;
+  border-radius: 100%;
+}
+.call-icon-background, .video-icon-background, .settings-icon-background{
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  padding: 3px;
+  margin-left: 10px;
+}
+.conversation-title-right-box img{
+  padding: 5px;
+}
+.conversation-icon:hover{
+  cursor: pointer;
+  background-color: rgb(234, 234, 234);
+}
+.conversation-icon:active{
+  cursor: pointer;
+  background-color: rgb(220, 220, 220);
+}
+
+/* ----------main conversation section----------- */
+.conversation-messages-box{
+  height: 100%;
+  overflow: auto;
+}
+.message-box{
+  display: flex;
+  margin: 0 10px 0 10px
+}
+.sent-message-box{
+  justify-content: end;
+}
+
+.message{
+  width:fit-content;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  max-width: 600px;
+}
+.sent-message{
+  background-color: rgb(55, 140, 237);
+  color: white;
+}
+.received-message{
+  background-color: rgb(234, 234, 234);
+}
+
+.add-message-box{
+  height: 60px;
+  border-top: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+.add-message-left-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(220, 220, 220);
+  border-radius: 100px;
+  padding: 5px;
+  margin-left: 20px;
+  margin-right: 10px;
+  height: 30px;
+  width: 92%
+}
+.send-message-input{
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 16px;
+  padding-left: 8px;
+  outline: none;
+  width: 90%
+}
+.add-message-box img:hover{
+  cursor: pointer;
+}
+.add-message-right-section{
+  display: flex;
+  align-items: center;
+}
+.send-icon-background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 100%;
+}
+.send-icon-background:hover{
+  background-color: rgb(234, 234, 234);
+}
+.send-icon-background:active{
+  background-color: rgb(220, 220, 220);
+}
+/* ---------------contact section--------------- */
 .contact-column{
   flex: 2;
-  
 }

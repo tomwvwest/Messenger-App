@@ -7,11 +7,24 @@ const listOfContacts = [
 const listOfChatsElement = document.querySelector('.list-of-chats');
 listOfChatsElement.innerHTML = generateChatList();
 
-let currentContact = '';
-const chatboxes = document.querySelectorAll('.chat-box');
+// Code for selecting which contact to view
+let currentContact = listOfContacts[0]['name'];
+document.querySelectorAll('.chat-box').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.chat-box').forEach((chatBox) => {
+      chatBox.style.backgroundColor = '';
+    });
+    const contactNameElement = button.querySelector('.chat-box-name');
+    currentContact = contactNameElement.textContent;
+    console.log(currentContact);
+
+    button.style.backgroundColor = 'rgb(234,234,234)';
+  })
+})
 
 
-
+function generateConversation(contact){
+}
 
 
 // Function to generate the chat list HTML
@@ -38,4 +51,6 @@ function generateChatList() {
   return listOfChatsHTML;
 }
 
-
+//make scroller start at bottom
+const scrollContainer = document.querySelector('.conversation-messages-box');
+scrollContainer.scrollTop = scrollContainer.scrollHeight;
