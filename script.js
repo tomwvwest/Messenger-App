@@ -1,3 +1,4 @@
+const savedCurrentContact = localStorage.getItem('currentContact');
 const listOfContacts = [
   {name: 'Tom', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello1'}]}, 
   {name: 'Lara', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}, 
@@ -9,13 +10,14 @@ listOfChatsElement.innerHTML = generateChatList();
 const conversationMessagesElement = document.querySelector('.conversation-messages-box');
 
 // Code for selecting which contact to view
-let currentContact = listOfContacts[0]['name'];
+let currentContact = savedCurrentContact;
 console.log(currentContact);
 document.querySelectorAll('.chat-box').forEach((button) => {
   const contactNameElement = button.querySelector('.chat-box-name');
   if(currentContact === contactNameElement.textContent){
     button.style.backgroundColor = 'rgb(234,234,234)';
   }
+  conversationMessagesElement.innerHTML = generateConversation(currentContact);
 
   button.addEventListener('click', () => {
     document.querySelectorAll('.chat-box').forEach((chatBox) => {
@@ -23,6 +25,7 @@ document.querySelectorAll('.chat-box').forEach((button) => {
     });
     const contactNameElement = button.querySelector('.chat-box-name');
     currentContact = contactNameElement.textContent;
+    localStorage.setItem('currentContact', currentContact);
     console.log(currentContact);
     button.style.backgroundColor = 'rgb(234,234,234)';
     conversationMessagesElement.innerHTML = generateConversation(currentContact);
@@ -30,7 +33,7 @@ document.querySelectorAll('.chat-box').forEach((button) => {
 })
 
 
-
+// Function to generate the conversation HTML
 function generateConversation(contact){
   let listOfMessagesHTML = '';
   for(const contactName of listOfContacts){
@@ -53,7 +56,6 @@ function generateConversation(contact){
     }
   }
   
-
 
 // Function to generate the chat list HTML
 function generateChatList() {
