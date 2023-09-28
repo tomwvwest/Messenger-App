@@ -100,6 +100,9 @@ sendButton.addEventListener('click', addMessage);
 function addMessage(){
   for(const contact of listOfContacts){
     if(contact['name'] === currentContact){
+      if(messageToSend.value === ''){
+        return
+      }
       contact['conversation'].push({direction: 'sent', message: `${messageToSend.value}`})
       messageToSend.value = '';
       console.log(messageToSend.value)
