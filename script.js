@@ -11,6 +11,8 @@ listOfChatsElement.innerHTML = generateChatList();
 const conversationMessagesElement = document.querySelector('.conversation-messages-box');
 const conversationContactName = document.querySelector('.conversation-title-left-box');
 const contactColumnTop = document.querySelector('.contact-column-top');
+const messageToSend = document.querySelector('.send-message-input');
+const sendButton = document.querySelector('.send-icon-background');
 
 
 // Code for selecting which contact to view
@@ -29,6 +31,9 @@ function setupEventListeners(){
         chatBox.style.backgroundColor = '';
       });
       const contactNameElement = button.querySelector('.chat-box-name');
+      if(currentContact !== contactNameElement.textContent){
+        messageToSend.value = '';
+      }
       currentContact = contactNameElement.textContent;
       localStorage.setItem('currentContact', currentContact);
       console.log(currentContact);
@@ -36,6 +41,12 @@ function setupEventListeners(){
       conversationMessagesElement.innerHTML = generateConversation(currentContact);
       scrollContainer.scrollTop = scrollContainer.scrollHeight;
     })
+  })
+
+  messageToSend.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      addMessage()
+    }
   })
 }
 setupEventListeners();
@@ -94,8 +105,7 @@ function generateChatList() {
   return listOfChatsHTML;
 }
 
-const messageToSend = document.querySelector('.send-message-input');
-const sendButton = document.querySelector('.send-icon-background');
+
 sendButton.addEventListener('click', addMessage);
 function addMessage(){
   for(const contact of listOfContacts){
