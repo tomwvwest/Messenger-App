@@ -12,29 +12,33 @@ const conversationMessagesElement = document.querySelector('.conversation-messag
 const conversationContactName = document.querySelector('.conversation-title-left-box');
 const contactColumnTop = document.querySelector('.contact-column-top');
 
+
 // Code for selecting which contact to view
 let currentContact = savedCurrentContact;
 console.log(currentContact);
-document.querySelectorAll('.chat-box').forEach((button) => {
-  const contactNameElement = button.querySelector('.chat-box-name');
-  if(currentContact === contactNameElement.textContent){
-    button.style.backgroundColor = 'rgb(234,234,234)';
-  }
-  conversationMessagesElement.innerHTML = generateConversation(currentContact);
-
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.chat-box').forEach((chatBox) => {
-      chatBox.style.backgroundColor = '';
-    });
+function setupEventListeners(){
+  document.querySelectorAll('.chat-box').forEach((button) => {
     const contactNameElement = button.querySelector('.chat-box-name');
-    currentContact = contactNameElement.textContent;
-    localStorage.setItem('currentContact', currentContact);
-    console.log(currentContact);
-    button.style.backgroundColor = 'rgb(234,234,234)';
+    if(currentContact === contactNameElement.textContent){
+      button.style.backgroundColor = 'rgb(234,234,234)';
+    }
     conversationMessagesElement.innerHTML = generateConversation(currentContact);
-    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+  
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.chat-box').forEach((chatBox) => {
+        chatBox.style.backgroundColor = '';
+      });
+      const contactNameElement = button.querySelector('.chat-box-name');
+      currentContact = contactNameElement.textContent;
+      localStorage.setItem('currentContact', currentContact);
+      console.log(currentContact);
+      button.style.backgroundColor = 'rgb(234,234,234)';
+      conversationMessagesElement.innerHTML = generateConversation(currentContact);
+      scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    })
   })
-})
+}
+setupEventListeners();
 
 // Function to generate the conversation HTML and photos 
 function generateConversation(contact){
@@ -97,14 +101,16 @@ function addMessage(){
   for(const contact of listOfContacts){
     if(contact['name'] === currentContact){
       contact['conversation'].push({direction: 'sent', message: `${messageToSend.value}`})
+      messageToSend.value = '';
       console.log(messageToSend.value)
       console.log(currentContact)
       conversationMessagesElement.innerHTML = generateConversation(currentContact);
       listOfChatsElement.innerHTML = generateChatList();
-      messageToSend.value = '';
+      setupEventListeners();
       scrollContainer.scrollTop = scrollContainer.scrollHeight;
     }
   }
+  return
 }
 
 //make scroller start at bottom
