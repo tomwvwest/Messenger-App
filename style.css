@@ -181,13 +181,21 @@ body{
 }
 .message-box{
   display: flex;
-  margin: 0 10px 0 10px
+  margin: 0 10px 0 10px;
+  align-items: end;
 }
 .message-box:last-child{
   margin-bottom: 10px;
 }
 .sent-message-box{
   justify-content: end;
+}
+.conversation-photo-box{
+  width: 30px;
+}
+.conversation-profile-pic{
+  width: 100%;
+  border-radius: 15px;
 }
 
 .message{

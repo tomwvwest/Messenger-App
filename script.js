@@ -1,9 +1,9 @@
 const savedCurrentContact = localStorage.getItem('currentContact');
 const listOfContacts = [
-  {name: 'Tom', photo: 'icons/Tom.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello1'}]}, 
+  {name: 'Tom', photo: 'icons/Tom.jpeg', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'received', message: 'Hello1'}, {direction: 'received', message: 'Hello2'}]}, 
   {name: 'Lara', photo: 'icons/Lara.jpeg', conversation: [{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'}]}, 
   {name: 'Ryan',photo: 'icons/Ryan.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'}]},
-  {name: 'Luca', photo: 'icons/Luca.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}]}
+  {name: 'Luca', photo: 'icons/Luca.jpeg', conversation: [{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}, {direction: 'received', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'received', message: 'Hello3'},{direction: 'received', message: 'Hello'}, {direction: 'received', message: 'Hello2'},{direction: 'sent', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'Hello2'},{direction: 'received', message: 'Hello'}, {direction: 'sent', message: 'All Saints badminton club is a Badminton England affiliated club for the Rickmansworth, Croxley Green and Chorleywood area offering club and match play for adults over the age of 18.'}]}
 ];
 
 const listOfChatsElement = document.querySelector('.list-of-chats');
@@ -60,19 +60,29 @@ function generateConversation(contact){
         <div class="conversation-title-name">${contact}</div>`
         contactColumnTop.innerHTML = `<div class="contact-column-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
       <div class="contact-column-name">${contact}</div>`
-      for(const message of contactName['conversation']){
-        if(message['direction']==='sent'){
-          listOfMessagesHTML += `<div class="sent-message-box message-box">
-          <div class="sent-message message">${message['message']}</div>
-        </div>`
-        }
-        else if (message['direction'] === 'received'){
-          listOfMessagesHTML += `<div class="received-message-box message-box">
-          <div class="received-message message">${message['message']}</div>
-        </div>`
-        }
 
+      for (let i = 0; i < contactName['conversation'].length; i++) {
+        if (contactName['conversation'][i]['direction'] === 'sent') {
+          listOfMessagesHTML += `<div class="sent-message-box message-box">
+            <div class="sent-message message">${contactName['conversation'][i]['message']}</div>
+          </div>`;
+        } else if (contactName['conversation'][i]['direction'] === 'received') {
+          if (i === contactName['conversation'].length - 1 || contactName['conversation'][i + 1]['direction'] !== 'received') {
+            // Handle the last received message or when the next message is not received
+            listOfMessagesHTML += `<div class="received-message-box message-box">
+              <div class="conversation-photo-box"> <img src="${contactName['photo']}" class="conversation-profile-pic"></div>
+              <div class="received-message message">${contactName['conversation'][i]['message']}</div>
+            </div>`;
+          } else {
+            // Handle received messages with consecutive 'received' direction
+            listOfMessagesHTML += `<div class="received-message-box message-box">
+            <div class="conversation-photo-box"></div>
+              <div class="received-message message">${contactName['conversation'][i]['message']}</div>
+            </div>`;
+          }
+        }
       }
+      
       return listOfMessagesHTML
     }
     }
