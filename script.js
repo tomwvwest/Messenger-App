@@ -57,16 +57,16 @@ function generateConversation(contact){
   for(const contactName of listOfContacts){
     if(contact === contactName['name']){
       conversationContactName.innerHTML = `<div class="conversation-title-box-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
-    <div class="conversation-title-name">${contact}</div>`
-    contactColumnTop.innerHTML = `<div class="contact-column-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
-  <div class="contact-column-name">${contact}</div>`
+        <div class="conversation-title-name">${contact}</div>`
+        contactColumnTop.innerHTML = `<div class="contact-column-profile-pic"><img class="profile-image" src="${contactName['photo']}"></div>
+      <div class="contact-column-name">${contact}</div>`
       for(const message of contactName['conversation']){
         if(message['direction']==='sent'){
           listOfMessagesHTML += `<div class="sent-message-box message-box">
           <div class="sent-message message">${message['message']}</div>
         </div>`
         }
-        else{
+        else if (message['direction'] === 'received'){
           listOfMessagesHTML += `<div class="received-message-box message-box">
           <div class="received-message message">${message['message']}</div>
         </div>`
