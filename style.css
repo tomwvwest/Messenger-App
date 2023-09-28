@@ -161,7 +161,68 @@ body{
   border-radius: 50%;
   padding: 3px;
   margin-left: 10px;
+  flex-direction: column;
+  position:relative;
 }
+.call-icon-popup{
+  position: absolute;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  width: 120px;
+  font-size: 14px;
+  background-color: rgb(62, 62, 62);
+  color:white;
+  bottom: -30px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s 0.25s;
+}
+.call-icon-background:hover .call-icon-popup{
+  opacity: 1;
+}
+.video-icon-popup{
+  position: absolute;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  width: 120px;
+  font-size: 14px;
+  background-color: rgb(62, 62, 62);
+  color:white;
+  bottom: -30px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s 0.25s;
+}
+.video-icon-background:hover .video-icon-popup{
+  opacity: 1;
+}
+.settings-icon-popup{
+  position: absolute;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  width: 80px;
+  font-size: 14px;
+  background-color: rgb(62, 62, 62);
+  color:white;
+  bottom: -30px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s 0.25s;
+}
+.settings-icon-background:hover .settings-icon-popup{
+  opacity: 1;
+}
+
+
 .conversation-title-right-box img{
   padding: 5px;
 }
